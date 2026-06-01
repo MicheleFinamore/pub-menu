@@ -1,0 +1,16 @@
+---
+description: shadcn/ui usage and composition conventions
+globs: apps/web/src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# shadcn UI Conventions
+
+- Prefer existing shadcn components before custom styled markup.
+- Compose primitives correctly (`DialogTitle` in dialogs, `TabsTrigger` inside `TabsList`, `AvatarFallback` in avatars).
+- Use component variants and semantic tokens over ad-hoc class overrides.
+- Use `cn()` for conditional classes; avoid complex manual string concatenation.
+- For layout spacing, use `flex/grid` with `gap-*`; avoid legacy `space-x-*` / `space-y-*`.
+- Keep forms structured with shared form primitives and consistent validation states.
+- Keep icons consistent with project icon library and component composition rules.
+- Preserve accessibility defaults (labels, aria attributes, keyboard navigation) when customizing components.

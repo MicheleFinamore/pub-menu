@@ -1,0 +1,15 @@
+---
+description: Supabase data access patterns (React Query optional)
+globs: apps/web/src/{app/api,lib/supabase,lib/services}/**/*.ts
+alwaysApply: false
+---
+
+# Supabase Data Access Patterns
+
+- Keep Supabase client creation centralized and typed; avoid duplicating setup logic.
+- Keep DB/API access in services and route handlers, not in presentation components.
+- Validate external inputs at boundaries (params, forms, payloads) before DB/API operations.
+- Handle loading, empty, and error states explicitly in user-facing screens.
+- Keep writes explicit and map failures to clear domain errors.
+- If `@tanstack/react-query` is introduced, use stable query keys and explicit cache invalidation.
+- If React Query is not used, keep data-fetching logic simple and predictable.

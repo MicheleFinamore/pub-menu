@@ -1,0 +1,15 @@
+---
+description: Enforce monorepo package boundaries and imports
+alwaysApply: true
+---
+
+# Monorepo Workspace Boundaries
+
+- Use workspace package imports across packages (for example `@pub/db`), never deep relative imports between apps/packages.
+- Keep shared logic in `packages/*`; keep app-specific UI and routes in `apps/web`.
+- Do not import from another package's `src` internals unless that path is explicitly exported.
+- Prefer public entrypoints (`index.ts`) to avoid coupling to private file structure.
+- If a symbol is reused by more than one app/package, move it to a shared package.
+- Keep database access centralized in `packages/db`; UI layers should consume typed APIs, not raw DB clients.
+- Before adding new dependencies, verify whether the dependency belongs at root, app, or package scope.
+- Avoid circular dependencies between workspace packages.

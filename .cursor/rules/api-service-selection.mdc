@@ -1,0 +1,15 @@
+---
+description: Use existing services for API calls or create focused new ones
+globs: apps/web/src/{app,lib/services}/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# API Service Selection
+
+- When adding API/data calls, first check `apps/web/src/lib/services` for an existing service that already owns that domain.
+- Reuse the correct service when possible instead of adding ad-hoc fetch logic inside pages/components.
+- If no service fits, create a new focused service file with a clear domain name (for example `orders.service.ts`).
+- Keep service responsibilities narrow: one domain per service, explicit exported functions, predictable inputs/outputs.
+- UI components should call service functions (directly or through hooks), not build low-level request logic inline.
+- Keep transport/error normalization in services where possible.
+- If a new endpoint touches an existing domain, extend the existing service instead of creating duplicates.

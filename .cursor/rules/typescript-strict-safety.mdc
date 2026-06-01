@@ -1,0 +1,16 @@
+---
+description: TypeScript strict safety and validation conventions
+globs: {apps/web/src,packages}/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript Strict Safety
+
+- Keep strict typing end-to-end; avoid `any` unless there is a documented, temporary reason.
+- Prefer `unknown` over `any` for external/untrusted inputs, then narrow with guards or schemas.
+- Use `zod` schemas for runtime validation at boundaries (forms, env, API payloads, webhooks).
+- Model domain data with explicit types and discriminated unions instead of stringly-typed flags.
+- Handle errors intentionally: include context and preserve original causes where possible.
+- Avoid non-null assertions (`!`) unless data invariants are guaranteed and explained in code.
+- Keep function signatures explicit for exported APIs and shared utilities.
+- Use exhaustive checks for unions (`never`) in switches to prevent silent regressions.

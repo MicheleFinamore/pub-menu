@@ -1,0 +1,16 @@
+---
+description: Pre-merge quality gates for lint, types, build, and tests
+globs: {apps,packages,supabase}/**/*
+alwaysApply: false
+---
+
+# Testing and Lint Gates
+
+- Before closing a task, run at least one relevant check for the changed scope (for example lint, typecheck, build, or tests).
+- New behavior should have a clear verification path (automated test when practical, otherwise a short manual QA note).
+- For small UI or copy-only changes, lightweight verification is acceptable.
+- For bug fixes, add regression coverage when the effort is reasonable.
+- If a check fails and is temporarily deferred, document the reason and a follow-up.
+- Prefer deterministic tests and avoid flaky timing-based assertions.
+- For critical flows (auth, billing, data mutations), increase confidence with broader validation when possible.
+- Update docs or inline usage notes when behavior or developer workflow changes.

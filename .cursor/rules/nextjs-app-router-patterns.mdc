@@ -1,0 +1,17 @@
+---
+description: Next.js App Router conventions for web app
+globs: apps/web/src/{app,lib/services}/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Next.js App Router Patterns
+
+- Default to Server Components in `app/`; add `"use client"` only when hooks, browser APIs, or event handlers are required.
+- Keep route segments thin: move reusable UI to `components/*` and data logic to dedicated modules.
+- Keep components small and feature-focused; extract subcomponents/hooks/services instead of growing generic "do everything" components.
+- Use `notFound()` and `redirect()` for control flow instead of manual fallback rendering.
+- Keep metadata colocated with route segments via `metadata` or `generateMetadata`.
+- Prefer server-side data loading for initial page render; hydrate client state only when interactivity is needed.
+- Use route groups and nested layouts to keep shared chrome out of page-level components.
+- Validate search params and dynamic params before usage to avoid implicit runtime assumptions.
+- Keep loading and error states explicit with `loading.tsx` and `error.tsx` where appropriate.

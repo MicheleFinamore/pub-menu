@@ -1,0 +1,42 @@
+---
+description: Source of truth for project architecture and structural changes
+alwaysApply: true
+---
+
+# Pub Menu Architecture
+
+## Purpose
+
+- This is the fast architecture context file for the agent.
+- Detailed requirements and architecture live in `docs/architecture/ARCHITECTURE.md`.
+- Structural history lives in `docs/architecture/CHANGELOG.md`.
+
+## Mandatory Read Order (structural tasks)
+
+1. User request
+2. This file (`.cursor/rules/architecture.mdc`)
+3. `docs/architecture/ARCHITECTURE.md`
+4. Minimal additional files required by the task
+
+## Core Boundaries
+
+- Multi-tenant data isolation is enforced in DB (Supabase + RLS).
+- Domain/API logic belongs in `apps/web/src/lib/services` and `packages/db`, not page components.
+- Components stay small and feature-focused; split by responsibility early.
+- Prefer extending existing domain services over introducing duplicate fetch/request flows.
+- Admin Web App (`/admin/*`) is a mandatory product surface and must remain in implementation scope.
+
+## Structural Change Triggers
+
+Update architecture docs in the same task when you change:
+
+- DB schema/migrations/RLS/auth data model
+- service boundaries or domain ownership
+- route/layout structure
+- shared package/module boundaries
+
+## Sync Checklist
+
+- Update date and impacted sections in `docs/architecture/ARCHITECTURE.md`
+- Append one entry to `docs/architecture/CHANGELOG.md` (`date | change | reason`)
+- Keep this file aligned if global boundaries/policy changed
